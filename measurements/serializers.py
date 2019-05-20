@@ -6,3 +6,4 @@ class MeasurementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Measurement
         fields = ('id', 'datetime', 'temperature', 'humidity', 'light', 'is_loud', 'is_valid')
+        ordering = ['-id']
