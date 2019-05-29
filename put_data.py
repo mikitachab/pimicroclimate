@@ -2,7 +2,7 @@ import requests
 
 
 api_url = 'https://pimicroclimate.herokuapp.com/api/measurements/'
-local_url = 'http://127.0.0.1:8000/'
+local_url = 'http://localhost:8000/api/measurements/'
 
 responce = requests.get(url=api_url)
 data_json = responce.json()
