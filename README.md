@@ -13,7 +13,7 @@ Run Django Dev Server
 ```bash
 python manage.py runserver
 ```
-For testing porpose you can populate local dev server with data from heroku prodaction sever. Remember that local dev server must be running with default django debug host address.
+For testing porpose you can populate local dev server with data from heroku prodaction sever. Remember that local dev server must be running with default django debug host address (or you can simply change url inside of script).
 ```bash
 python put_data.py
 ```
