@@ -9,16 +9,6 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-}
-td,
-th {
-  padding: 10;
-}
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -35,32 +25,22 @@ container {
 @media (min-width: 768px) {
   .container {
     width: 750px;
-    height: 500px;
   }
 }
 @media (min-width: 992px) {
   .container {
     width: 970px;
-    height: 700px;
   }
 }
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
-    height: 800px;
   }
 }
-.paginator {
-	text-align: center;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
 a:link, a:visited {
   background-color: white;
   color: black;
-  border: 2px solid blue;
-  padding: 10px 20px;
+  padding: 6px 14px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

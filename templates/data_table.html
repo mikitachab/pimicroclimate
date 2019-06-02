@@ -1,0 +1,72 @@
+<!--DOCTYPE html -->
+{% load staticfiles %}
+
+<head>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<link rel="stylesheet"  href="/static/css/table.css">
+</head>
+<html>
+	<body>
+		<h1>{{ title }} </h1>
+		<div>
+			<p>
+				<a href={{ index }}>Back to index page</a>
+			</p>
+		</div>
+	
+<form action="/table/data/" method="POST">
+{% csrf_token %}
+<select name="dev">
+{% for device in devices %}
+        {% ifequal device.id selected_devices.id %}
+        	<option value="{{device.id}}" selected="selected">Device {{device.id}}: {{device.name}}</option>
+        {% else %}
+        	<option value="{{device.id}}">Device {{device.id}}: {{device.name}}</option>
+        {% endifequal %}
+{% endfor %}
+</select>
+<input  type = "submit" value="Change device">
+</form>
+	<br/>
+		<table>
+		<tr>
+			<th>Date time</th>
+			<th>Temperature</th>
+			<th>Humidity</th>
+			<th>Light</th>
+			<th>Is loud</th>
+			<th>Is valid</th>
+		</tr>
+		{% for obj in data_list %}
+		<tr>
+			<th>{{ obj.datetime }}</th>
+			<th>{{ obj.temperature }}</th>
+			<th>{{ obj.humidity }}</th>
+			<th>{{ obj.light }}</th>
+			<th>{{ obj.is_loud }}</th>
+			<th>{{ obj.is_valid }}</th>
+		</tr>
+		{% endfor %}
+		</table>
+		</div>
+		<div class="paginator">
+			{% if data_list.has_previous %}
+				<a href="?page=1">First page</a>
+				<a href="?page={{ data_list.previous_page_number }}"><</a>
+			{% endif %}
+			{% for page in data_list.paginator.page_range %}
+				{% if data_list.number == page %}
+					<a href="?page={{ page }}"><strong> {{ page }}</strong></a>
+					{% elif page > data_list.number|add:'-4' and page < data_list.number|add:'3'  %}
+					<a href="?page={{ page }}">{{ page }}</a>
+				{% endif %}
+			{% endfor %}
+
+			{% if data_list.has_next  %}
+			<a href="?page={{ data_list.next_page_number  }}">></a>
+			<a href="?page={{ data_list.paginator.num_pages }}">Last page</a>
+			{% endif %}
+		</div>
+
+	</body>
+</html>
