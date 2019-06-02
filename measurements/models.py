@@ -8,7 +8,11 @@ class Measurement(models.Model):
     is_loud = models.BooleanField()
     is_valid = models.BooleanField()
     datetime = models.DateTimeField()
+    device_id = models.ForeignKey('Device', on_delete=models.CASCADE, default=1)
 
+
+class Device(models.Model):
+    name = models.CharField(max_length=30)
 
 # measurements = Table(
 #     'measurements', meta,
