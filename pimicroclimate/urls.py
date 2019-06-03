@@ -23,6 +23,6 @@ urlpatterns = [
     path('', view.index),
     path('hello/', include('hello.urls')),
     path('api/', include('measurements.urls')),
-    path('table/', include('measurements.urls')),
+    path('data/', include('measurements.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

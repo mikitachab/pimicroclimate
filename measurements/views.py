@@ -34,9 +34,9 @@ def table(request):
             "title": "Measured data",
             "devices": devices
         }
-    return render(request, "data_table.html", context)
+    return render(request, "table.html", context)
 
-def view(request):
+def plot(request):
     queryset = Measurement.objects.all().order_by('id')
     plot = plots.measurements_plot()
     context = {

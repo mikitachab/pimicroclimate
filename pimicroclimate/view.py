@@ -5,7 +5,7 @@ from django.http import HttpResponse
 def index(request):
     context = {
             "title" : "Welcome on PiMicolimate",
-            "data_table" : "/table/data",
-            "data_view" : "/table/view"
+            "data_table" : "/data/table",
+            "data_plot" : "/data/plot"
         }
     return render(request, "index.html", context)
