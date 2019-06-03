@@ -5,42 +5,42 @@ from . models import Measurement
 from . models import Device
 from .serializers import MeasurementSerializer
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from . import plots
 from django.core.paginator import Paginator
 
 
 def table(request):
     devices = Device.objects.all().order_by('id')
+    #default attribute value if not presented
+    session_dev_id = request.session.get('dev_id','1')
+    #apply new value in post request
     if request.method == 'POST':
         try:
-            device_id = request.session['dev_id']
-            if int(device_id) > 0:
-                print("DEVICE ID: ", device_id)
-                data = request.POST.get('dev')
-                queryset = Measurement.objects.filter(device_id_id=int(data))
-                print(queryset)
-                #need to continue
+            request.session['dev_id'] = request.POST.get('dev')
+            return HttpResponseRedirect('/data/table/')
         except KeyError:
-            print("No such attribute")
-
-    request.session['dev_id'] = '1'
-    queryset = Measurement.objects.all().order_by('id')
+            print("No such attribute. view.table POST method Error.")
+            
+    queryset = Measurement.objects.filter(device_id_id=int(session_dev_id)).order_by('id')
     paginator = Paginator(queryset, 30)
     page = request.GET.get('page')
     queryset = paginator.get_page(page)
     context = {
             "data_list": queryset,
             "index" : "/",
+            "plot" : "/data/plot/",
             "title": "Measured data",
             "devices": devices
         }
     return render(request, "table.html", context)
 
 def plot(request):
-    queryset = Measurement.objects.all().order_by('id')
-    plot = plots.measurements_plot()
+    session_dev_id = request.session.get('dev_id','1')
+    plot = plots.measurements_plot(session_dev_id)
     context = {
         "title": "Measurements plot",
+        "table" : "/data/table/",
         "index" : "/",
         "plot": plot
     }

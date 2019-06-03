@@ -10,19 +10,23 @@
 		<h1>{{ title }} </h1>
 		<div>
 			<p>
-				<a href={{ index }}>Back to index page</a>
+				<a href={{ index }}>Back to main page</a>
 			</p>
+			<p>
+				<a href={{ plot }}>Go to plot page</a>
+			</p>
+
 		</div>
 	
-<form action="/table/data/" method="POST">
+<form action="/data/table/" method="POST">
 {% csrf_token %}
 <select name="dev">
 {% for device in devices %}
-        {% ifequal device.id selected_devices.id %}
+        {% if device.id == request.session.dev_id %}
         	<option value="{{device.id}}" selected="selected">Device {{device.id}}: {{device.name}}</option>
         {% else %}
         	<option value="{{device.id}}">Device {{device.id}}: {{device.name}}</option>
-        {% endifequal %}
+        {% endif %}
 {% endfor %}
 </select>
 <input  type = "submit" value="Change device">
