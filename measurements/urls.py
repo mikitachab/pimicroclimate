@@ -7,5 +7,6 @@ router.register('measurements', views.MeasurementView)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('plot/', views.plot),
     path('table/', views.table)
 ]

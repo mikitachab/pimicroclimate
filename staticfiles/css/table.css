@@ -26,30 +26,6 @@ body {
   color: #333;
   background-color: #fff;
 }
-container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-    height: 500px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-    height: 700px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-    height: 800px;
-  }
-}
 .paginator {
 	text-align: center;
 	margin-top: 1em;
@@ -59,14 +35,13 @@ container {
 a:link, a:visited {
   background-color: white;
   color: black;
-  border: 2px solid blue;
-  padding: 10px 20px;
+  padding: 6px 14px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
 }
 
 a:hover, a:active {
-  background-color: orange;
+  background-color: green;
   color: white;
 }
