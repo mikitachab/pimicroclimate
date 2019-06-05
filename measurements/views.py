@@ -29,7 +29,6 @@ def table(request):
     context = {
             "data_list": queryset,
             "index" : "/",
-            "plot" : "/data/plot/",
             "title": "Measured data",
             "devices": devices
         }
@@ -46,6 +45,16 @@ def plot(request):
     }
     return render(request, "plot.html", context)
 
+def compare_plot(request):
+    if request.method == 'POST':
+        attribute = request.POST.get('attribute')
+
+    plot = plots.compare_plot(attribute)
+    contex = {
+            "title" : "Compare device data attribute",
+            "plot" : plot
+            }
+    return render(request, "compare.html", context)
 
 class MeasurementView(viewsets.ModelViewSet):
     queryset = Measurement.objects.all()
