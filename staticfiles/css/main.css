@@ -3,59 +3,17 @@ html {
     display: table;
     margin: auto;
 }
-
-body {
-	text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-}
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-}
-td,
-th {
-  padding: 10;
-}
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
-}
-container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-    height: 500px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-    height: 700px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-    height: 800px;
-  }
-}
-.paginator {
-	text-align: center;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 
+}
 a:link, a:visited {
   background-color: white;
   color: black;

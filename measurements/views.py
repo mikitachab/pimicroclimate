@@ -27,9 +27,10 @@ def table(request):
     page = request.GET.get('page')
     queryset = paginator.get_page(page)
     context = {
-            "data_list": queryset,
-            "index" : "/",
             "title": "Measured data",
+            "data_list": queryset,
+            "plot" : "/data/plot/",
+            "index" : "/",
             "devices": devices
         }
     return render(request, "table.html", context)
