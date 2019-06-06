@@ -45,15 +45,17 @@ def plot(request):
     }
     return render(request, "plot.html", context)
 
-def compare_plot(request):
+def compare_attribute(request):
+    attributes = ['Humidity', 'Light', 'Temperature']
     if request.method == 'POST':
         attribute = request.POST.get('attribute')
+        plot = plots.comparing_plot(attribute)
 
-    plot = plots.compare_plot(attribute)
-    contex = {
-            "title" : "Compare device data attribute",
-            "plot" : plot
-            }
+    context = {
+            "title" : "Compare devices data attribute",
+            "attributes" : attributes,
+            "index" : "/"
+    }
     return render(request, "compare.html", context)
 
 class MeasurementView(viewsets.ModelViewSet):

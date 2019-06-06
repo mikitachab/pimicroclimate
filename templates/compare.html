@@ -2,21 +2,23 @@
 {% load staticfiles %}
 
 <head>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <link rel="stylesheet"  href="/static/css/plot.css">
 </head>
 <html>
 	<body>
 		<h1>{{ title }} </h1>
-	<div> 
 		<p>
-			<a href = {{ index }}>Back to main page</a>
+			<a href={{ index }}>Back to main page</a>
 		</p>
-	</div>
-        <div class="container">
-            <div class="row" style="border: 1px solid black">
-            {# <div id="plot_container" class="col-md-8 col-md-offset-2">{{plot|safe}}</div>#}
-            <div class="col-md-12">{{plot|safe}}</div>
-        </div>
 	</body>
+	<form action="/data/compare/" method="POST">
+	{% csrf_token %}
+	<select name="attribute">
+	{% for attribute in attibutes %}
+        	<option value="{{attribute}}" selected="selected">Attribute : {{attribute}}</option>
+        {% endif %}
+{% endfor %}
+</select>
+	<input  type = "submit" value="Compare attributes for devices">
+	</form>
 </html>

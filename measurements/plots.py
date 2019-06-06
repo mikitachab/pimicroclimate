@@ -2,20 +2,16 @@ import datetime
 import numpy as np
 import plotly.graph_objs as go
 from plotly.offline import plot
-from . models import Measurement
-
+from . models import Measurement, Device
 
 def measurements_plot(device_id):
     #filter data to specified device
-    datetime = Measurement.objects.filter(device_id_id = int(device_id))
-    temperature = Measurement.objects.filter(device_id_id = int(device_id))
-    humidity = Measurement.objects.filter(device_id_id = int(device_id))
-    light = Measurement.objects.filter(device_id_id = int(device_id))
+    device_data = Measurement.objects.filter(device_id_id = int(device_id))
     #apply columns data
-    datetime = datetime.values_list('datetime', flat = True)
-    temperature = temperature.values_list('temperature', flat = True)
-    humidity = humidity.values_list('humidity', flat = True)
-    light = light.values_list('light', flat = True)
+    datetime = device_data.values_list('datetime', flat = True)
+    temperature = device_data.values_list('temperature', flat = True)
+    humidity = device_data.values_list('humidity', flat = True)
+    light = device_data.values_list('light', flat = True)
     temperature_plot = go.Scatter(
             x = list(datetime),
         y = list(temperature),
@@ -43,4 +39,18 @@ def measurements_plot(device_id):
     fig = go.Figure(data = data, layout = layout)
     config = {'responsive': True}
     plot_div = plot(fig, output_type = 'div', config = config, include_plotlyjs = True)
+    return plot_div
+
+def comparing_plot(attribute):
+    #getting all devices id
+    devices = list(Device.objects.values_list('id', flat = True))
+    print(devices)
+    #filtering devices data with attribute
+    device_data = []
+    for device in devices:
+    #    device_data.append(Measurements.objects.filter(device_id_id = int(device)).values_list(attribute, flat = True))
+        print(device)
+        device_data = Measurement.objects.filter(device_id_id = int(device))
+        device_data = device_data.values_list(str(attribute), flat = True)
+        print(device_data)
     return plot_div
