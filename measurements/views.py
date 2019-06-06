@@ -50,6 +50,13 @@ def compare_attribute(request):
     if request.method == 'POST':
         attribute = request.POST.get('attribute')
         plot = plots.comparing_plot(attribute)
+        context = {
+            "title" : "Compare devices data attribute",
+            "attributes" : attributes,
+            "index" : "/",
+            "plot": plot
+        }
+        return render(request, "compare.html", context)
 
     context = {
             "title" : "Compare devices data attribute",
