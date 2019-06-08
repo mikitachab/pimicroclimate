@@ -57,7 +57,7 @@ def comparing_plot(attribute):
         plot_view = go.Scatter(
                 y = list(devices_attribute_data[int(dev_id)-1]),
                 x = list(devices_attribute_data_datetime[int(dev_id)-1]),
-                name = 'Device id: '+str(dev_id)
+                name = devices_name[int(dev_id)-1]
                 )
         plots.append(plot_view)
 

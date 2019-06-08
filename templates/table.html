@@ -16,20 +16,27 @@
 			</p>
 
 		</div>
-	
 <form action="/data/table/" method="POST">
 {% csrf_token %}
 <select name="dev">
 {% for device in devices %}
-        {% if device.id == request.session.dev_id %}
-        	<option value="{{device.id}}" selected="selected">Device {{device.id}}: {{device.name}}</option>
+        {% if device.id == request.session.dev_id|add:0 %}
+        	<option value="{{ device.id }}" selected="selected">Device {{ device.id }}: {{ device.name }}</option>
         {% else %}
-        	<option value="{{device.id}}">Device {{device.id}}: {{device.name}}</option>
+        	<option value="{{ device.id }}">Device {{ device.id }}: {{ device.name }}</option>
         {% endif %}
 {% endfor %}
 </select>
 <input  type = "submit" value="Change device">
 </form>
+<form action="/data/temperature/" method="POST">
+	<p>
+{% csrf_token %}
+<input  type = "number" name="temp_from">
+<input  type = "number" name="temp_to">
+<input  type = "submit" value="Apply temperature filter">
+</form>
+	</p>
 	<br/>
 		<table>
 		<tr>

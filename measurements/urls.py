@@ -9,5 +9,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('plot/', views.plot),
     path('table/', views.table),
-    path('compare/', views.compare_attribute)
+    path('compare/', views.compare_attribute),
+    path('temperature/', views.temperature)
 ]
