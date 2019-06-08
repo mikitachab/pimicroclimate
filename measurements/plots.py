@@ -4,9 +4,13 @@ import plotly.graph_objs as go
 from plotly.offline import plot
 from . models import Measurement, Device
 
-def measurements_plot(device_id):
+def measurements_plot(device_id, filtered_queryset):
     #filter data to specified device
-    device_data = Measurement.objects.filter(device_id_id = int(device_id))
+    device_data = []
+    if not filtered_queryset:
+        device_data = Measurement.objects.filter(device_id_id = int(device_id))
+    else:
+        device_data = filtered_queryset
     
     #filter data to each attribute 
     attributes_list = ['temperature','humidity','light']

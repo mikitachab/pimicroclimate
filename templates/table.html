@@ -1,8 +1,7 @@
 <!--DOCTYPE html -->
 {% load staticfiles %}
 
-<head>
-<link rel="stylesheet"  href="/static/css/table.css">
+<head> <link rel="stylesheet"  href="/static/css/table.css">
 </head>
 <html>
 	<body>
@@ -30,11 +29,17 @@
 <input  type = "submit" value="Change device">
 </form>
 <form action="/data/temperature/" method="POST">
-	<p>
 {% csrf_token %}
+<select name="filters">
+	{% for attribute in filters %}
+	<option value="{{ attribute }}">{{ attribute }}</option>
+	{% endfor %}
+</select>
 <input  type = "number" name="temp_from">
 <input  type = "number" name="temp_to">
-<input  type = "submit" value="Apply temperature filter">
+<input  type = "submit" value="Apply selected filter">
+<input type="radio" id="filter" name="filter_radio_button" value="OK">
+<label for="student">Apply to a filtered data</label>
 </form>
 	</p>
 	<br/>
