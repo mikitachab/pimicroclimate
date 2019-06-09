@@ -3,7 +3,19 @@ html {
     display: table;
     margin: auto;
 }
-
+.button1 {
+	background-color: white;
+	border-radius: 6px;
+	font-size: 12px;
+	color: black;
+	border: 2px solid #E6F3FF;
+	padding: 10px 20px;
+	transition-duration: 0.3s;
+}
+.button1:hover{
+	background-color: #1A90FF;
+	color: white;
+}
 body {
 	text-align: center;
     display: table-cell;

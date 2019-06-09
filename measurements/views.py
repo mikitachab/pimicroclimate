@@ -110,6 +110,7 @@ def plot(request):
     if request.method == 'POST':
         try:
             request.session['dev_id'] = request.POST.get('dev')
+            filtered_queryset = []
             return HttpResponseRedirect('/data/plot/')
         except KeyError:
             print("No such attribute. view.plot POST method Error.")
