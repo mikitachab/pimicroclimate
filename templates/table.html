@@ -38,10 +38,44 @@
 <input  type = "number" name="temp_from">
 <input  type = "number" name="temp_to">
 <input  class="button1" type = "submit" value="Apply selected filter">
-<input type="radio" id="filter" name="filter_radio_button" value="OK">
-<label for="radio">Apply to a filtered data</label>
+<input type="checkbox" id="filter" name="filter_radio_button" value="OK">
+<label for="checkbox">Apply to a filtered data</label>
 </form>
 	</p>
+<p>
+</p>
+<h1>Apply date filter</h1>
+<p> </p>
+<form action="/data/filter_by_date/" method="POST">
+{% csrf_token %}
+<div>
+<label for="year">Year</label>
+<input  type = "number" name="year">
+</div>
+<p> </p>
+<div>
+<label for="year">Month</label>
+<input  type = "number" name="month">
+</div>
+<p> </p>
+<div>
+<label for="year">Day</label>
+<input  type = "number" name="day">
+</div>
+<p> </p>
+<input  class="button1" type = "submit" value="Apply date filter">
+<label>{{ message }}</label>
+<div>
+<input type="checkbox" id="date" name="datetime_button" value="OK">
+<label for="checkbox">Filter befor entered date</label>
+</div>
+</form>
+<form action="/data/reset_date_filter/" method="POST">
+{% csrf_token %}
+<div>
+<input  class="button1" type = "submit" value="Reset date filter">
+</div>
+</form>
 	<br/>
 		<table>
 		<tr>
