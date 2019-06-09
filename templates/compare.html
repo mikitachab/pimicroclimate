@@ -1,0 +1,33 @@
+<!--DOCTYPE html -->
+{% load staticfiles %}
+
+<head>
+<link rel="stylesheet"  href="/static/css/plot.css">
+</head>
+<html>
+	<body>
+		<h1>{{ title }} </h1>
+		<p>
+			<a href={{ index }}>Back to main page</a>
+		</p>
+	<form action="/data/compare/" method="POST">
+	{% csrf_token %}
+	<select name="attribute">
+		{% for attribute in attributes %}
+        	{% if attribute == current_attribute %}
+		<option value="{{ attribute }}" selected="selected">{{ attribute }}</option>
+        {% else %}
+		<option value="{{ attribute }}">{{ attribute }}</option>
+        {% endif %}
+{% endfor %}
+</select>
+
+	<input  type = "submit" value="Compare attributes for devices">
+	</form>
+	<div class="container">
+            <div class="row" style="border: 1px solid black">
+            {# <div id="plot_container" class="col-md-8 col-md-offset-2">{{plot|safe}}</div>#}
+            <div class="col-md-12">{{plot|safe}}</div>
+        </div>
+	</body>
+</html>

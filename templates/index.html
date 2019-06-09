@@ -2,15 +2,19 @@
 {% load staticfiles %}
 
 <head>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <link rel="stylesheet"  href="/static/css/main.css">
 </head>
 <html>
 	<body>
 		<h1>{{ title }} </h1>
 		<p>
-		<a href={{ data_table }}>Measurements table view</a>
+			<a href={{ data_table }}>Measurements table view</a>
 		</p>
-		<a href={{ data_plot }}>Measurements plot view</a>
+		<p>
+			<a href={{ data_plot }}>Measurements plot view</a>
+		</p>
+		<p>
+			<a href={{ compare }}>Comapre measurements</a>
+		</p>
 	</body>
 </html>

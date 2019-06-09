@@ -3,18 +3,16 @@ html {
     display: table;
     margin: auto;
 }
-
-body {
-	text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-}
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+
 }
 container {
   padding-right: 15px;

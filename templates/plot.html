@@ -10,9 +10,26 @@
 		<h1>{{ title }} </h1>
 	<div> 
 		<p>
-		<a href = {{ index }}>Back to index page</a>
+			<a href = {{ index }}>Back to main page</a>
 		</p>
+		<p>
+			<a href = {{ table }}>Go to table page</a>
+		</p>
+
 	</div>
+<form action="/data/plot/" method="POST">
+{% csrf_token %}
+<select name="dev">
+{% for device in devices %}
+        {% if device.id == request.session.dev_id|add:0 %}
+        	<option value="{{ device.id }}" selected="selected">Device {{ device.id }}: {{ device.name }}</option>
+        {% else %}
+        	<option value="{{ device.id }}">Device {{ device.id }}: {{ device.name }}</option>
+        {% endif %}
+{% endfor %}
+</select>
+<input  type = "submit" value="Change device">
+</form>
         <div class="container">
             <div class="row" style="border: 1px solid black">
             {# <div id="plot_container" class="col-md-8 col-md-offset-2">{{plot|safe}}</div>#}

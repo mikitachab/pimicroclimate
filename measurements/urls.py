@@ -8,5 +8,7 @@ router.register('measurements', views.MeasurementView)
 urlpatterns = [
     path('', include(router.urls)),
     path('plot/', views.plot),
-    path('table/', views.table)
+    path('table/', views.table),
+    path('compare/', views.compare_attribute),
+    path('temperature/', views.temperature)
 ]
