@@ -10,5 +10,5 @@ urlpatterns = [
     path('plot/', views.plot),
     path('table/', views.table),
     path('compare/', views.compare_attribute),
-    path('temperature/', views.temperature)
+    path('filter_by_attribute/', views.filter_by_attribute)
 ]

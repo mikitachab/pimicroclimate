@@ -28,7 +28,7 @@
 </select>
 <input  class="button1" type = "submit" value="Change device">
 </form>
-<form action="/data/temperature/" method="POST">
+<form action="/data/filter_by_attribute/" method="POST">
 {% csrf_token %}
 <select name="filters">
 	{% for attribute in filters %}
