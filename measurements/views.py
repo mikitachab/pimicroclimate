@@ -14,7 +14,7 @@ from . models import Device
 devices = Device.objects.all().order_by('id')
 filtered_queryset = []
 
-def temperature(request):
+def filter_by_attribute(request):
     session_dev_id = request.session.get('dev_id','1')
     #dictionary for data filtering
     attribute = {}
