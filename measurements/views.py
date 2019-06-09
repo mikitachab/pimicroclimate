@@ -13,17 +13,15 @@ from . models import Device
 #device from db. Global variable for methods
 devices = Device.objects.all().order_by('id')
 filtered_queryset = []
+session_dev_id = None
 
 def filter_by_attribute(request):
-    session_dev_id = request.session.get('dev_id','1')
     #dictionary for data filtering
     attribute = {}
+    global session_dev_id
+
     #apply new values in post request
     if request.method == 'POST':
-        try:
-            session_dev_id = request.session.get('dev_id')
-        except KeyError:
-            print("No such attribute. view.temperature POST method Error.")
 
         #setting keywords for dictionary
         attribute_keyword = request.POST.get('filters').lower()
@@ -74,6 +72,7 @@ def table(request):
     global filtered_queryset
     filters = ['Temperature', 'Humidity', 'Light']
     #default attribute value if not presented
+    global session_dev_id
     session_dev_id = request.session.get('dev_id','1')
 
     #apply new value in post request
@@ -106,6 +105,7 @@ def table(request):
 
 def plot(request):
     global filtered_queryset
+    global session_dev_id
     session_dev_id = request.session.get('dev_id','1')
     if request.method == 'POST':
         try:
